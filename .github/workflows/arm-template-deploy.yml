@@ -34,11 +34,11 @@ jobs:
         uses: Azure/arm-deploy@v1
         with:
           # Provide the scope of the deployment. Valid values are: 'resourcegroup', 'managementgroup', 'subscription'
-          scope: resourcegroup
+          scope: subscription
           # Override the Subscription Id set by Azure Login.
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
           # Provide the name of a resource group, only required for resource Group deployments.
-          resourceGroupName: HeatherPharmaWebDemo
+          #resourceGroupName: HeatherPharmaWebDemo
           # Specify the path or URL to the Azure Resource Manager template.
           template: ./infra/template.json
           # Incremental (only add resources to resource group) or Complete (remove extra resources from resource group) or Validate (only validates the template).
