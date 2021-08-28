@@ -37,6 +37,8 @@ jobs:
           scope: subscription
           # Override the Subscription Id set by Azure Login.
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
+          # Provide the target region, only required for management Group or Subscription deployments.
+          region: centralus
           # Provide the name of a resource group, only required for resource Group deployments.
           #resourceGroupName: HeatherPharmaWebDemo
           # Specify the path or URL to the Azure Resource Manager template.
