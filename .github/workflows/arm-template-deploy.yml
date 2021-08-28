@@ -34,22 +34,23 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+          
       - name: Deploy Azure Resource Manager (ARM) Template
         uses: Azure/arm-deploy@v1
         with:
           # Provide the scope of the deployment. Valid values are: 'resourcegroup', 'managementgroup', 'subscription'
           scope: resourcegroup
           # Override the Subscription Id set by Azure Login.
-          subscriptionId: TODO
+          subscriptionId: 41c6c7e4-98c9-4fe6-bdc9-0ef21cfc9462
           # Provide the name of a resource group, only required for resource Group deployments.
           resourceGroupName: HeatherPharmaWebDemo
           # Specify the path or URL to the Azure Resource Manager template.
-          template: TODO
+          template: infra/template.json
           # Incremental (only add resources to resource group) or Complete (remove extra resources from resource group) or Validate (only validates the template).
           deploymentMode: Complete
           # Specifies the name of the resource group deployment to create.
-          deploymentName: TODO
+          deploymentName: HeatherPharmaWebDemo
           # Supply deployment parameter values.
-          parameters: TODO
+          parameters: infra/parameters.json
           # Specify whether to fail the action if some data is written to stderr stream of az cli. Valid values are: true, false
           failOnStdErr: fail
