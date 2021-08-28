@@ -3,16 +3,16 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "sites_HeatherPharmaWebApp_name": {
-            "value": HeatherPharmaWebApp
+            "value": "HeatherPharmaWebApp"
         },
         "components_HeatherPharmaWebApp_name": {
-            "value": HeatherPharmaWebApp
+            "value": "HeatherPharmaWebApp"
         },
         "serverfarms_ASP_HeatherPharmaWebDemo_b96d_name": {
-            "value": ASP_HeatherPharmaWebDemo_b96d
+            "value": "ASP_HeatherPharmaWebDemo_b96d"
         },
         "workspaces_defaultworkspace_41c6c7e4_98c9_4fe6_bdc9_0ef21cfc9462_eus_externalid": {
-            "value": defaultworkspace_41c6c7e4_98c9_4fe6_bdc9_0ef21cfc946
+            "value": "defaultworkspace_41c6c7e4_98c9_4fe6_bdc9_0ef21cfc946"
         }
     }
 }
