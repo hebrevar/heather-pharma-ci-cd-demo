@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "sites_HeatherPharmaWebApp_name": {
-            "value": "HeatherPharmaWebApp2"
+            "value": "HeatherPharmaWebApp"
         },
       "serverfarms_ASP_HeatherPharmaWebApp_8add_externalid": {
         "value": "/subscriptions/41c6c7e4-98c9-4fe6-bdc9-0ef21cfc9462/resourceGroups/HeatherPharmaWebApp/providers/Microsoft.Web/serverfarms/ASP-HeatherPharmaWebApp-8add"
