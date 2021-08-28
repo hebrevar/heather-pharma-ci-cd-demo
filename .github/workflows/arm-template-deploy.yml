@@ -25,15 +25,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      # Log into Azure
+      - uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
           
       - name: Deploy Azure Resource Manager (ARM) Template
         uses: Azure/arm-deploy@v1
@@ -41,16 +36,16 @@ jobs:
           # Provide the scope of the deployment. Valid values are: 'resourcegroup', 'managementgroup', 'subscription'
           scope: resourcegroup
           # Override the Subscription Id set by Azure Login.
-          subscriptionId: 41c6c7e4-98c9-4fe6-bdc9-0ef21cfc9462
+          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
           # Provide the name of a resource group, only required for resource Group deployments.
           resourceGroupName: HeatherPharmaWebDemo
           # Specify the path or URL to the Azure Resource Manager template.
-          template: infra/template.json
+          template: ./infra/template.json
           # Incremental (only add resources to resource group) or Complete (remove extra resources from resource group) or Validate (only validates the template).
           deploymentMode: Complete
           # Specifies the name of the resource group deployment to create.
           deploymentName: HeatherPharmaWebDemo
           # Supply deployment parameter values.
-          parameters: infra/parameters.json
+          parameters: ./infra/parameters.json
           # Specify whether to fail the action if some data is written to stderr stream of az cli. Valid values are: true, false
           failOnStdErr: fail
