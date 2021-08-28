@@ -1,31 +1,31 @@
+name: azure-webapp-deploy
+
 on:
   release:
     types: [created]
+#  workflow_run:
+#    workflows: ["Build"]
+#    types: [completed]
 
 env:
-  AZURE_WEBAPP_NAME: your-app-name    # set this to your application's name
-  AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
-  NODE_VERSION: '10.x'                # set this to the node version to use
+  AZURE_WEBAPP_NAME: HeatherPharmaWebApp          # set this to your application's name
+  AZURE_WEBAPP_PACKAGE_PATH: '.'                  # set this to the path to your web app project, defaults to the repository root
+  DOTNET_VERSION: '3.1.x'                         # set this to the dot net version to use
 
 jobs:
-  build-and-deploy:
-    name: Build and Deploy
+  build:
     runs-on: windows-latest
-    environment: production
+
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ env.NODE_VERSION }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ env.NODE_VERSION }}
-    - name: Azure WebApp
-      uses: Azure/webapps-deploy@v2
-      with:
-        # Name of the Azure Web App
-        app-name: HeatherPharmaWebApp
-        # Applies to Web Apps(Windows and Linux) and Web App Containers(linux). Multi container scenario not supported. Publish profile (*.publishsettings) file contents with Web Deploy secrets
-        publish-profile: TODO
-        # Enter an existing Slot other than the Production slot
-        slot-name: production
-        # Applies to Web App only: Path to package or folder. *.zip, *.war, *.jar or a folder to deploy
-        package: TODO
+      # Checkout the repo
+      - uses: actions/checkout@main
+      - uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # Deploy to Azure Web apps
+      - name: 'Run Azure webapp deploy action using publish profile credentials'
+        uses: azure/webapps-deploy@v2
+        with: 
+          app-name: ${{ env.AZURE_WEBAPP_NAME }} # Replace with your app name
+          package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp'
