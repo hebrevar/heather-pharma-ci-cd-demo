@@ -2,7 +2,7 @@ name: azure-webapp-deploy
 
 on:
   release:
-    types: [created]
+    types: [published]
 #  workflow_run:
 #    workflows: ["Build"]
 #    types: [completed]
