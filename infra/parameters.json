@@ -1,18 +1,12 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
-  "parameters": {
-    "sites_HeatherPharmaWebApp_name": {
-      "value": "HeatherPharmaWebApp"
-    },
-    "components_HeatherPharmaWebApp_name": {
-      "value": "HeatherPharmaWebApp"
-    },
-    "serverfarms_ASP_HeatherPharmaWebDemo_b96d_name": {
-      "value": "ASP-HeatherPharmaWebDemo-b96d"
-    },
-    "workspaces_defaultworkspace_41c6c7e4_98c9_4fe6_bdc9_0ef21cfc9462_eus_externalid": {
-      "value": "/subscriptions/41c6c7e4-98c9-4fe6-bdc9-0ef21cfc9462/resourceGroups/defaultresourcegroup-eus/providers/microsoft.operationalinsights/workspaces/defaultworkspace-41c6c7e4-98c9-4fe6-bdc9-0ef21cfc9462-eus",
+    "parameters": {
+        "sites_HeatherPharmaWebApp_name": {
+            "value": "HeatherPharmaWebApp2"
+        },
+      "serverfarms_ASP_HeatherPharmaWebApp_8add_externalid": {
+        "value": "/subscriptions/41c6c7e4-98c9-4fe6-bdc9-0ef21cfc9462/resourceGroups/HeatherPharmaWebApp/providers/Microsoft.Web/serverfarms/ASP-HeatherPharmaWebApp-8add"
+      }
     }
-  }
 }
