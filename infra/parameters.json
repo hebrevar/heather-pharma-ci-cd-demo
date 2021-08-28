@@ -3,10 +3,10 @@
     "contentVersion": "1.0.0.0",
   "parameters": {
     "sites_HeatherPharmaWebApp_name": {
-      "value": null
+      "value": "HeatherPharmaWebApp"
     },
     "components_HeatherPharmaWebApp_name": {
-      "value": null
+      "value": "HeatherPharmaWebApp"
     },
     "serverfarms_ASP_HeatherPharmaWebDemo_b96d_name": {
       "value": "ASP-HeatherPharmaWebDemo-b96d"
