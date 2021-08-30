@@ -15,5 +15,16 @@ namespace Heather.Pharma.Web.Demo.Test
 			// assert
 			Assert.IsFalse(false, "Demo unit test should return false.");
 		}
+		
+		[TestMethod]
+		public void TestMethodShouldReturnTrue()
+		{
+			// arrange
+
+			// act
+
+			// assert
+			Assert.IsTrue(true, "Demo unit test should return true.");
+		}
 	}
 }
