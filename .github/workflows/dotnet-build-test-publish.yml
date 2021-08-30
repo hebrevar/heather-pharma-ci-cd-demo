@@ -3,8 +3,6 @@ name: dotnet-build-test-publish
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
   workflow_dispatch:
 
 jobs:
