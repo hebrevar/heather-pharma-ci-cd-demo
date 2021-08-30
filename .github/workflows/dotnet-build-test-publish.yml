@@ -10,12 +10,7 @@ jobs:
     
     defaults:
       run:
-        working-directory: ./src
-        
-   # env:
-   #   AZURE_WEBAPP_NAME: dev-heather-pharma-webapp
-   #   AZURE_WEBAPP_PACKAGE_PATH: './myapp'                 
-   #   DOTNET_VERSION: '3.1.x'                              
+        working-directory: ./src                           
 
     steps:
       - name: Check Out GitHub Code
@@ -38,6 +33,11 @@ jobs:
       - name: Publish
         run: dotnet publish -c Release -o ${{ github.workspace }}
         
+      - uses: actions/upload-artifact@v2
+        with:
+          name: heather-pharma-webapp-pckg
+          path: ${{ github.workspace }}
+        
   deploy:
     
     needs: [build]
@@ -56,9 +56,13 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
+      - uses: actions/download-artifact@v2
+        with:
+          name: heather-pharma-webapp-pckg
 
       - name: 'Run Azure webapp deploy action using service principal'
         uses: azure/webapps-deploy@v2
         with: 
           app-name: ${{ env.AZURE_WEBAPP_NAME }} # Replace with your app name
-          package: ${{ github.workspace }}
+          package: heather-pharma-webapp-pckg
