@@ -12,10 +12,10 @@ jobs:
       run:
         working-directory: ./src
         
-    env:
-      AZURE_WEBAPP_NAME: dev-heather-pharma-webapp
-      AZURE_WEBAPP_PACKAGE_PATH: './myapp'                 
-      DOTNET_VERSION: '3.1.x'                              
+   # env:
+   #   AZURE_WEBAPP_NAME: dev-heather-pharma-webapp
+   #   AZURE_WEBAPP_PACKAGE_PATH: './myapp'                 
+   #   DOTNET_VERSION: '3.1.x'                              
 
     steps:
       - name: Check Out GitHub Code
@@ -38,6 +38,18 @@ jobs:
       - name: Publish
         run: dotnet publish -c Release -o ${{ github.workspace }}
         
+  deploy:
+
+    runs-on: windows-latest
+    
+    # defaults:
+    #  run:
+    #    working-directory: ./src
+        
+    env:
+      AZURE_WEBAPP_NAME: dev-heather-pharma-webapp    
+        
+    steps:    
       - name: Login to Azure
         uses: azure/login@v1
         with:
