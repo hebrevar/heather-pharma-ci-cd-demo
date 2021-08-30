@@ -1,4 +1,4 @@
-name: dotnet-build-test-publish
+name: dotnet-build-test-deploy
 
 on:
   workflow_dispatch:
