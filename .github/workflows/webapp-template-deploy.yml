@@ -34,7 +34,7 @@ jobs:
           # Specify the path or URL to the Azure Resource Manager template.
           template: ./infra/webapp-template.json
           # Incremental (only add resources to resource group) or Complete (remove extra resources from resource group) or Validate (only validates the template).
-          deploymentMode: Complete
+          deploymentMode: Incremental
           # Specifies the name of the resource group deployment to create.
           deploymentName: HeatherPharmaWebDemo
           # Supply deployment parameter values.
