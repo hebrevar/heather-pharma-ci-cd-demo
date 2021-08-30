@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: arm-template-deploy
+name: webapp-template-deploy
 
 # Controls when the workflow will run
 on: workflow_dispatch
