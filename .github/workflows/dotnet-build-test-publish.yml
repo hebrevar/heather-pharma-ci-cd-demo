@@ -1,7 +1,8 @@
 name: dotnet-build-test-deploy
 
 on:
-  workflow_dispatch:
+  push:
+    branches: [main]
 
 jobs:
   build:
@@ -45,7 +46,7 @@ jobs:
     runs-on: windows-latest
         
     env:
-      AZURE_WEBAPP_NAME: dev-heather-pharma-webapp    
+      AZURE_WEBAPP_NAME: test-heather-pharma-webapp    
         
     steps:    
       - name: Login to Azure
