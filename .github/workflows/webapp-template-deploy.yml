@@ -1,5 +1,3 @@
-# This is a basic workflow to help you get started with Actions
-
 name: webapp-template-deploy
 
 # Controls when the workflow will run
@@ -7,10 +5,10 @@ on: workflow_dispatch
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
+  # This workflow contains a single job called "deploy"
+  deploy:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -22,22 +20,31 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           
+      # Deploy ARM Template with parameter file
       - name: Deploy Azure Resource Manager (ARM) Template
         uses: Azure/arm-deploy@v1
         with:
+        
           # Provide the scope of the deployment. Valid values are: 'resourcegroup', 'managementgroup', 'subscription'
           scope: resourcegroup
+          
           # Override the Subscription Id set by Azure Login.
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
+          
           # Provide the name of a resource group, only required for resource Group deployments.
           resourceGroupName: HeatherPharmaWebApp
+          
           # Specify the path or URL to the Azure Resource Manager template.
           template: ./infra/webapp-template.json
+          
           # Incremental (only add resources to resource group) or Complete (remove extra resources from resource group) or Validate (only validates the template).
           deploymentMode: Incremental
+          
           # Specifies the name of the resource group deployment to create.
           deploymentName: HeatherPharmaWebDemo
+          
           # Supply deployment parameter values.
           parameters: ./infra/webapp-parameters.json
+          
           # Specify whether to fail the action if some data is written to stderr stream of az cli. Valid values are: true, false
           failOnStdErr: fail
