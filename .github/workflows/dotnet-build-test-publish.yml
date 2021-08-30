@@ -15,12 +15,13 @@ jobs:
         working-directory: ./src
         
     env:
-      AZURE_WEBAPP_NAME: dev-heather-pharma-webapp          # set this to your application's name
-      AZURE_WEBAPP_PACKAGE_PATH: './myapp'                  # set this to the path to your web app project, defaults to the repository root
-      DOTNET_VERSION: '3.1.x'                         # set this to the dot net version to use
+      AZURE_WEBAPP_NAME: dev-heather-pharma-webapp
+      AZURE_WEBAPP_PACKAGE_PATH: './myapp'                 
+      DOTNET_VERSION: '3.1.x'                              
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Check Out GitHub Code
+        uses: actions/checkout@v2
       
       - name: Setup .NET Core SDK 3.1.x
         uses: actions/setup-dotnet@v1.7.2
@@ -39,12 +40,12 @@ jobs:
       - name: Publish
         run: dotnet publish -c Release -o ${{ github.workspace }}
         
-      - uses: azure/login@v1
+      - name: Login to Azure
+        uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      # Deploy to Azure Web apps
-      - name: 'Run Azure webapp deploy action using publish profile credentials'
+      - name: 'Run Azure webapp deploy action using service principal'
         uses: azure/webapps-deploy@v2
         with: 
           app-name: ${{ env.AZURE_WEBAPP_NAME }} # Replace with your app name
